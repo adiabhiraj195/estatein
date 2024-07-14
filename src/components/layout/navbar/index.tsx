@@ -1,8 +1,7 @@
 "use client"
 
 import React from 'react'
-import Image from 'next/image';
-import Logo from '../ui/logo';
+import Logo from '../../ui/logo';
 import { navlinks } from '@/lib/links/nav-links';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -15,12 +14,11 @@ export default function Navbar() {
     let isActive = false;
 
     return (
-        <div className='nav-container flex justify-between items-center px-10 py-4 bg-[#1A1A1A]' >
+        <div className='nav-container flex justify-between items-center px-20 py-4 bg-[#1A1A1A]' >
             <Logo />
 
             <div className='flex justify-between items-center'>
                 {navlinks.map(({ name, url }) => {
-
 
                     isActive = pathname === url || pathname.startsWith(`${router}/`);
 

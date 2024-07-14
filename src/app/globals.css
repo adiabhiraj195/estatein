@@ -12,3 +12,25 @@ body {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.purple {
+  color: #703BF7;
+}
+.bg-purple {
+  background-color: #703BF7;
+}
+.border-purple {
+  border-color: #703BF7;
+}
+.border-gray {
+  border-color: #262626;
+}
+.bg-gray {
+  background-color: #1A1A1A;
+}
+.bg-gray:hover{
+  background-color: #262626;
+}
+.gray {
+  color: #262626;
+}
