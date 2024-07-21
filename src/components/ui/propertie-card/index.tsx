@@ -1,10 +1,8 @@
-"use client"
 import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import { IoBed } from "react-icons/io5";
 import { FaBath, FaBuilding } from "react-icons/fa";
 import HybridButton from '../hybrid-button';
-import {GET} from "@/app/api/estate/route";
 
 interface PropertieCardtypes {
     image: StaticImageData;
@@ -28,9 +26,6 @@ export default function PropertieCard({
     url
 }: PropertieCardtypes) {
 
-    const handelCall = async()=>{
-        GET();
-    }
 
     return (
         <div className='flex flex-col border border-gray p-5 max-w-96 rounded-xl'>
@@ -67,7 +62,7 @@ export default function PropertieCard({
                 <p className='font-light text-gray-300 text-sm'>Price</p>
                 <div className='flex justify-between items-center'>
                     <h2>${price}</h2>
-                    <HybridButton onClick={handelCall}   className='h-1/2 items-end rounded-md bg-purple text-sm font-light px-3 py-2 hover:bg-gray-500'>
+                    <HybridButton href={url}   className='h-1/2 items-end rounded-md bg-purple text-sm font-light px-3 py-2 hover:bg-gray-500'>
                         View Property Details
                     </HybridButton>
                 </div>
