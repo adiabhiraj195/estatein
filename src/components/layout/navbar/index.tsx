@@ -14,7 +14,7 @@ export default function Navbar() {
     let isActive = false;
 
     return (
-        <div className='nav-container flex justify-between items-center px-20 py-4 bg-[#1A1A1A]' >
+        <div className='nav-container flex justify-between items-center px-20 py-4 bg-[#1A1A1A] z-50' >
             <Logo />
 
             <div className='flex justify-between items-center'>

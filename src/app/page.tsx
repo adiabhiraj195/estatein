@@ -4,26 +4,16 @@ import ShortcutCard from "@/components/ui/hero/shortcut-card";
 import HybridButton from "@/components/ui/hybrid-button";
 import { hero_shortcut_links } from "@/lib/links/hero-shortcut-links";
 import PropertieCard from "@/components/ui/propertie-card";
-
 import propImg from "@/assets/Image (1).png";
-import prisma from "@/db";
 import ReviewCardHome from "@/components/ui/review-card";
+import { getAllEstates } from "@/data-access/estate-and-location";
+import ArrowButton from "@/components/ui/arrows-buttons";
 
 export default async function Home() {
 
-
-  // const propertie_card = {
-  //   image={propImg}
-  //   prop_name="Seaside Serenity Villa"
-  //   about="A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood... Read More"
-  //   bedroom={3}
-  //   bathroom={2}
-  //   prop_type="villa"
-  //   price={5500000}
-  //   url="/properties/1"
-  // }
-
-  const data = await prisma.estate_estate_and_location.findMany();
+  const allEstates = await getAllEstates()
+  let estateListLength = allEstates.length;
+  let variable = 0;
 
   return (
     <main className="">
@@ -56,25 +46,25 @@ export default async function Home() {
 
         {/* property cards  */}
         {/* /**************************** */}
-        <div className="property-card-container">
+        <div className="property-card-container flex ">
           {
-            data.map(({
+            allEstates.map(({
               id,
-              estate_name,
-              estate_description,
-              estate_type,
-              number_of_bathroom,
-              number_of_bedroom,
+              estateName,
+              estateDescription,
+              estateType,
+              bathrooms,
+              bedrooms,
 
             }) => {
               return <PropertieCard
                 key={id}
                 image={propImg}
-                prop_name={estate_name}
-                about={estate_description}
-                bedroom={number_of_bedroom}
-                bathroom={number_of_bathroom}
-                prop_type={estate_type}
+                prop_name={estateName}
+                description={estateDescription.slice(0, 100) + `...`}
+                bedroom={bedrooms}
+                bathroom={bathrooms}
+                prop_type={estateType}
                 price={5500000}
                 url={`/properties/${id}`}
               />
@@ -86,7 +76,10 @@ export default async function Home() {
         <div className="flex justify-between items-center pt-6 border-t border-gray my-10">
           <p className="font-light text-sm text-gray-400"><span>{1}</span> of {60}</p>
 
-          arrows
+          <div className="flex ">
+            <ArrowButton direction="left" variable={variable} />
+            <ArrowButton direction="right" variable={variable} />
+          </div>
         </div>
         {/* /*********************************************** */}
       </Container>

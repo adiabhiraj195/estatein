@@ -14,12 +14,20 @@ datasource db {
 }
 
 model estate_estate_and_location {
-  id                 Int    @id @default(autoincrement())
-  estate_name        String @unique
-  // city_id     Int    @default(0)
-  estate_type        String
-  number_of_bedroom  Int
-  number_of_bathroom Int
-  estate_description String
+  id                Int     @id @unique @default(autoincrement())
+  estateName        String  @unique @map("estate_name")
+  cityName          String  @map("city_name")
+  countryName       String  @map("country_name")
+  estateType        String  @map("estate_type")
+  floorSpace        BigInt  @map("floor_space")
+  balconies         Int     @map("number_of_balconies")
+  bedrooms          Int     @map("number_of_bedroom")
+  bathrooms         Int     @map("number_of_bathrooms")
+  garages           Int     @map("number_of_garagers")
+  parkingSpace      Boolean @map("parking_space")
+  petAllowed        Boolean @map("pet_allowed")
+  estateDescription String  @map("estate_description")
+  keyFeatures       String  @map("key_features")
+  price             Int     @map("estate_price")
   // estate_image BLOBs
 }
