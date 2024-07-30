@@ -1,22 +1,17 @@
-"use client"
 import Container from '@/components/ui/container'
 import React from 'react'
-import InputField from '@/components/ui/inputs'
-import { useState } from 'react'
-import HybridButton from '@/components/ui/hybrid-button'
 import Options from '@/components/ui/inputs/options'
 import ArrowButton from '@/components/ui/arrows-buttons'
-// import PropertyCardTwo from '@/components/ui/propertie-card/propety-card-two';
 import { locations } from '@/lib/options/location'
-import { getAllEstates } from '@/data-access/estate-and-location'
+import PropertyCardTwoMaper from '@/components/ui/propertie-card/property-car-two-maper'
+import prisma from '@/db'
+import { EstateTypes } from '@/lib/types/estate.types'
+import InputFilter from '@/components/filters/input-filter'
+import Form from './form'
 
-// import propImg from "@/assets/Image (1).png";
-
-
-export default function PropertiesPage() {
-    const [searchValue, setSearchValue] = useState("");
-  const allEstates = getAllEstates()
-
+export default async function PropertiesPage() {
+    
+    // const estates = await prisma.estate_estate_and_location.findMany();
 
     let variable = 0;
     return (
@@ -29,54 +24,41 @@ export default function PropertiesPage() {
             {/* filter container  */}
             <Container className='flex flex-col items-center justify-center px-20'>
                 <div className='bg-[#1A1A1A] w-9/12 p-1 rounded-md'>
-                    <div className='flex items-center justify-between bg-black p-2 rounded-md'>
-                        <InputField
-                            name='search-input'
-                            placeholder='Search for a Property'
-                            value={searchValue}
-                            type='text'
-                            onInput={(e: React.SetStateAction<string>) => { setSearchValue(e) }}
-                            className="bg-transparent px-1"
-                        />
-
-                        <HybridButton className='px-4 py-3 bg-[#703BF7] font-light text-sm rounded-md hover:bg-[#693adffc] min-w-fit'>
-                            Find Property
-                        </HybridButton>
-                    </div>
+                    <InputFilter/>
                 </div>
 
                 <div className='filters bg-[#1A1A1A] w-full items-center flex justify-between rounded-md p-1'>
                     {/* map options */}
-                   <Options
-                    name='location'
-                    options={locations}
-                    className='bg-black w-48'
-                   />
-                   <Options
-                    name='Property Type'
-                    options={locations}
-                    className='bg-black w-48'
-                   />
-                   <Options
-                    name='Price Range'
-                    options={locations}
-                    className='bg-black w-48'
-                   />
-                   <Options
-                    name='Propety Size'
-                    options={locations}
-                    className='bg-black w-48'
-                   />
-                   <Options
-                    name='Build Year'
-                    options={locations}
-                    className='bg-black w-48'
-                   />
+                    <Options
+                        name='location'
+                        options={locations}
+                        className='bg-black w-48'
+                    />
+                    <Options
+                        name='Property Type'
+                        options={locations}
+                        className='bg-black w-48'
+                    />
+                    <Options
+                        name='Price Range'
+                        options={locations}
+                        className='bg-black w-48'
+                    />
+                    <Options
+                        name='Propety Size'
+                        options={locations}
+                        className='bg-black w-48'
+                    />
+                    <Options
+                        name='Build Year'
+                        options={locations}
+                        className='bg-black w-48'
+                    />
                 </div>
             </Container>
 
 
-            <Container className="px-20 py-20 ">
+            <Container className="px-20 py-10 ">
                 <div className="mb-20">
                     <h1 className="text-3xl mb-2 ">Discover a World of Possibilities</h1>
                     <p className="text-sm text-gray-400 font-light ">Our portfolio of properties is as diverse as your dreams. Explore the following categories to find the perfect property that resonates with your vision of home</p>
@@ -85,29 +67,9 @@ export default function PropertiesPage() {
                 {/* property cards  */}
                 {/* /**************************** */}
                 <div className="property-card-container flex ">
-                    {/* {
-                        allEstates.map(({
-                            id,
-                            estateName,
-                            estateDescription,
-                            estateType,
-                            bathrooms,
-                            bedrooms,
-
-                        }) => {
-                            return <PropertyCardTwo
-                                key={id}
-                                image={propImg}
-                                prop_name={estateName}
-                                description={estateDescription.slice(0, 100) + `...`}
-                                bedroom={bedrooms}
-                                bathroom={bathrooms}
-                                prop_type={estateType}
-                                price={5500000}
-                                url={`/properties/${id}`}
-                            />
-                        })
-                    } */}
+                    <PropertyCardTwoMaper
+                    // estates={estates as unknown as EstateTypes[]}
+                    />
 
                 </div>
 
@@ -120,6 +82,18 @@ export default function PropertiesPage() {
                     </div>
                 </div>
                 {/* /*********************************************** */}
+            </Container>
+
+            <Container className='px-20'>
+
+                <h1 className='text-3xl mb-5'>Let's Make it Happen</h1>
+                <p className='text-gray-400 text-sm font-light'>
+                    Ready to take the first step toward your dream property? Fill out the form below, and our real estate wizards will work their magic to find your perfect match. Don't wait; let's embark on this exciting journey together.
+                </p>
+
+                <div>
+                    <Form/>
+                </div>
             </Container>
 
         </main>

@@ -1,11 +1,12 @@
 import prisma from "@/db"
 import { NextResponse } from "next/server";
+// import { useEstateStore } from "@/states/store";
 
 export const GET = async ()=>{
-    const estate = await prisma.estate_estate_and_location.findMany()
+    // const setEstates = useEstateStore((state)=> state.setEstates);
+
+    const estate = await prisma.estate_estate_and_location.findMany();
     console.log(estate);
-    return new NextResponse(JSON.stringify(estate), {
-        status: 200
-    })
+    return NextResponse.json({estate});
 
 }

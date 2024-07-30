@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import HybridButton from '../hybrid-button';
-import { PropertyCardPropsType } from '@/lib/types/estate-types';
 
 export default function PropertyCardTwo({
     image,
@@ -10,7 +9,14 @@ export default function PropertyCardTwo({
     keyFeature,
     price,
     url
-}: PropertyCardPropsType) {
+}: {
+    image: StaticImageData
+    prop_name: string
+    description: string
+    keyFeature?: string 
+    price: number
+    url: string
+}) {
 
 
     return (
@@ -19,11 +25,11 @@ export default function PropertyCardTwo({
                 <Image src={image} alt={prop_name} className='' />
             </div>
 
-            <div className=' px-3 py-1 bg-gray  text-gray-200 rounded-2xl mr-2'>
+            {/* <div className=' px-3 py-1 bg-gray  text-gray-200 rounded-2xl mr-2 border border-gray'>
                 <p className='flex justfy-between items-center text-sm font-light '>
                     {keyFeature}
                 </p>
-            </div>
+            </div> */}
 
             <h2 className='text-xl mb-2'>{prop_name}</h2>
 

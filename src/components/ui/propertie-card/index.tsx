@@ -1,9 +1,9 @@
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import React from 'react'
 import { IoBed } from "react-icons/io5";
 import { FaBath, FaBuilding } from "react-icons/fa";
 import HybridButton from '../hybrid-button';
-import { PropertyCardPropsType } from '@/lib/types/estate-types';
+import { PropertyCardPropsType } from '@/lib/types/estate.types';
 
 
 export default function PropertieCard({

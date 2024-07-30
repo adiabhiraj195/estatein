@@ -3,17 +3,17 @@ import HeroSection from "@/components/ui/hero";
 import ShortcutCard from "@/components/ui/hero/shortcut-card";
 import HybridButton from "@/components/ui/hybrid-button";
 import { hero_shortcut_links } from "@/lib/links/hero-shortcut-links";
-import PropertieCard from "@/components/ui/propertie-card";
-import propImg from "@/assets/Image (1).png";
 import ReviewCardHome from "@/components/ui/review-card";
-import { getAllEstates } from "@/data-access/estate-and-location";
 import ArrowButton from "@/components/ui/arrows-buttons";
+import PropertyCardMaper from "@/components/ui/propertie-card/property-card-maper";
+import prisma from "@/db";
+import { EstateTypes } from "@/lib/types/estate.types";
 
 export default async function Home() {
 
-  const allEstates = await getAllEstates()
-  let estateListLength = allEstates.length;
+
   let variable = 0;
+  const estates = await prisma.estate_estate_and_location.findMany();
 
   return (
     <main className="">
@@ -47,30 +47,10 @@ export default async function Home() {
         {/* property cards  */}
         {/* /**************************** */}
         <div className="property-card-container flex ">
-          {
-            allEstates.map(({
-              id,
-              estateName,
-              estateDescription,
-              estateType,
-              bathrooms,
-              bedrooms,
 
-            }) => {
-              return <PropertieCard
-                key={id}
-                image={propImg}
-                prop_name={estateName}
-                description={estateDescription.slice(0, 100) + `...`}
-                bedroom={bedrooms}
-                bathroom={bathrooms}
-                prop_type={estateType}
-                price={5500000}
-                url={`/properties/${id}`}
-              />
-            })
-          }
-
+          <PropertyCardMaper
+            estates={estates as unknown as EstateTypes[]}
+          />
         </div>
 
         <div className="flex justify-between items-center pt-6 border-t border-gray my-10">
