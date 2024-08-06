@@ -5,10 +5,8 @@ import propImg from "@/assets/Image (1).png";
 import { useEstateStore } from "@/states/estate-store";
 
 export default function PropertyCardTwoMaper() {
-    const estates = useEstateStore(state=> state.estates);
-    if(estates == null){
-        console.log("estates are null")
-    }
+    const estates: EstateTypes[] = useEstateStore(state => state.estates);
+
 
     return (
         <>
@@ -17,7 +15,7 @@ export default function PropertyCardTwoMaper() {
                     id,
                     estateName,
                     estateDescription,
-                    keyFeatures,
+                    // keyFeatures,
 
                 }) => {
                     return (

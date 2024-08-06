@@ -7,7 +7,7 @@ import PropertyCardTwoMaper from '@/components/ui/propertie-card/property-car-tw
 import prisma from '@/db'
 import { EstateTypes } from '@/lib/types/estate.types'
 import InputFilter from '@/components/filters/input-filter'
-import Form from './form'
+import Form from '@/components/ui/form/property-details-form'
 
 export default async function PropertiesPage() {
     

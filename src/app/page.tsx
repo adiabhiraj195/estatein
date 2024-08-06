@@ -9,18 +9,21 @@ import PropertyCardMaper from "@/components/ui/propertie-card/property-card-mape
 import prisma from "@/db";
 import { EstateTypes } from "@/lib/types/estate.types";
 
+export const dynamic = "forced-dynamic"
+
 export default async function Home() {
 
-
+  
+  const estates = await prisma.estates.findMany();
+  // console.log(estates);
   let variable = 0;
-  const estates = await prisma.estate_estate_and_location.findMany();
 
   return (
     <main className="">
       <Container className="">
         <HeroSection />
 
-        <div className="flex justify-between items-center px-20 border-y-2 border-gray">
+        <div className="flex justify-around items-center  border-y-2 border-gray">
 
           {hero_shortcut_links.map(({ title, url, image }) => {
             return (

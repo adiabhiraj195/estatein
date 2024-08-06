@@ -13,7 +13,7 @@ export default function ShortcutCard({
     url: string;
 }) {
     return (
-        <Link href={url} className=' relative bg-gray rounded-xl py-4 px-10 flex flex-col justify-between items-center mx-2 my-1'>
+        <Link href={url} className=' relative bg-gray rounded-xl py-8 px-16 flex flex-col justify-between items-center mx-2 my-1'>
 
             {/* <GoArrowUpRight className='relative top-1 right-1' /> */}
 

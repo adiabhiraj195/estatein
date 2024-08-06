@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model estate_estate_and_location {
+model Estates {
   id                Int     @id @unique @default(autoincrement())
   estateName        String  @unique @map("estate_name")
   cityName          String  @map("city_name")
